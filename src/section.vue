@@ -216,7 +216,18 @@ export default {
                 this.sectionCtrl.update(this.section);
             }
         },
+        faqSelect(index) {
+            try {
+                if (this.faqSelected === this.section.data.faq[index].id)
+                    this.faqSelected = undefined
+                else
+                    this.faqSelected = this.section.data.faq[index].id
 
+                this.sectionCtrl.update(this.section);
+            } catch (error) {
+                wwLib.wwLog.error('ERROR : ', error);
+            }
+        },
         // --------- EDITOR FUNCTIONS ---------
         // All the codes between /* wwManager:start */ and /* wwManager:end */ are only for editor purposes
         // So It won't in the published website!
@@ -231,18 +242,6 @@ export default {
                 }
                 this.section.data.faq.splice(index, 0, data);
                 this.faqSelect(index)
-                this.sectionCtrl.update(this.section);
-            } catch (error) {
-                wwLib.wwLog.error('ERROR : ', error);
-            }
-        },
-        faqSelect(index) {
-            try {
-                if (this.faqSelected === this.section.data.faq[index].id)
-                    this.faqSelected = undefined
-                else
-                    this.faqSelected = this.section.data.faq[index].id
-
                 this.sectionCtrl.update(this.section);
             } catch (error) {
                 wwLib.wwLog.error('ERROR : ', error);
@@ -278,7 +277,6 @@ export default {
                 wwLib.wwLog.error('ERROR : ', error);
             }
         },
-        
         add(list, options) {
             try {
                 list.splice(options.index, 0, options.wwObject);
@@ -428,8 +426,8 @@ export default {
                 .icon {
                     margin: 0 10px 0 25px;
                     .ww-icon {
-                        -webkit-transition: all 1s;
-                        transition: all 1s;
+                        -webkit-transition: all .5s;
+                        transition: all .5s;
                     }
                 }
             }
@@ -442,19 +440,19 @@ export default {
                 &:after {
                     content: '';
                     height: 0px;
-                    -webkit-transition: all 1s;
-                    transition: all 1s;
+                    -webkit-transition: all .5s;
+                    transition: all .5s;
                     max-height: 0px;
                 }
                 .faq-content-container {
-                    -webkit-transition: all 1s;
-                    transition: all 1s;
+                    -webkit-transition: all .5s;
+                    transition: all .5s;
                     display: -webkit-box;
                     display: -ms-flexbox;
                     display: flex;
                     -webkit-box-align: center;
-                        -ms-flex-align: center;
-                            align-items: center;
+                    -ms-flex-align: center;
+                    align-items: center;
                     margin-bottom: 0;
                     max-height: 1000px;
                     min-height: 25px;
@@ -471,17 +469,17 @@ export default {
                     transition: all 1.5s;
                     visibility: hidden;
                     max-height: 0;
-                    -webkit-transition: margin-bottom 1s cubic-bezier(1, 0, 1, 1),
-                                visibility 0s 1s, 
-                                max-height 0s 1s;
-                    transition: margin-bottom 1s cubic-bezier(1, 0, 1, 1),
-                                visibility 0s 1s, 
-                                max-height 0s 1s;
+                    -webkit-transition: margin-bottom .5s cubic-bezier(1, 0, 1, 1),
+                                visibility 0s elem-container, 
+                                max-height 0s .5s;
+                    transition: margin-bottom .5s cubic-bezier(1, 0, 1, 1),
+                                visibility 0s .5s, 
+                                max-height 0s .5s;
                 }
                 &.selected:after {
                     height: 0;
-                    -webkit-transition: all 1s;
-                    transition: all 1s;
+                    -webkit-transition: all .5s;
+                    transition: all .5s;
                     max-height: 0px;
                 }
             }
