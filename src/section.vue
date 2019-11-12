@@ -375,11 +375,15 @@ export default {
             border-radius: 5px;
             z-index: 1;
             margin: 10px;
+            transition: transform 0.5s;
             @media (min-width: 768px) {
                 margin: 50px;
             }
             .list {
                 width: 100%;
+            }
+            &:hover {
+                transform: translateY(-10px);
             }
         }
     }
