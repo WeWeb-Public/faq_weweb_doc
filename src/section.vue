@@ -167,7 +167,7 @@ export default {
     methods: {
         goToPage(pageId) {
             const path = wwLib.wwWebsiteData.getPageRoute(pageId, true) || '/';
-            wwLib.$router.push(path);
+            wwLib.goTo(path);
             this.$emit('next', null);
         },
         init() {
